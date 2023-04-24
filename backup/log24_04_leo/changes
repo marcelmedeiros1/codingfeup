@@ -1,1 +1,17 @@
 
+Data: 24/04/2023
+Usuário: Leonardo Garcia
+
+//Na pasta "log24_04_leo" contém os arquvios originais dos conteúdos que fiz alterações.
+
+/*As alterações que fiz foram para implementar a classe Color, seguindo as instruções dadas. Vale lembrar que fiz apenas as 
+funções básicas da classe, ou seja, apenas implementei as funções necessárias para ela rodar sozinha, sem erros, contudo acho
+que ao decorrer do projeto teremos que implementar funções complementares para o funcionamento previsto da classe */
+
+//FILE "COLOR.HPP": fiz a denifição dos atributos da classe
+
+//FILE "COLOR.CPP": defini os construtores e member functions da classe.
+
+//RESULTADO: após fazer os testes fornecidos para checar se a classe funcionava bem, o resultado foi positivo! a classe está 
+implementada em seu corpo mais básico. Portanto, a versão dos arquivos Color no diretório principal do projeto são aqueles
+com mudanças atualizadas.
