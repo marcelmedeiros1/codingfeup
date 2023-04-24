@@ -1,35 +1,47 @@
 #include "Color.hpp"
 
 namespace prog {
+
+    //Default construtctor, all atributes are initialiazed as value 0.
     Color::Color() {
-
+        this->blue_ = 0;
+        this->green_ = 0;
+        this->red_ = 0;
     }
+    //Copy constructor. Receives as argument a constant object of type Color, defines as atributes of the current object a copy of the respective atributes.
     Color::Color(const Color& other) {
-
+        this->red_ = other.red_;
+        this->green_ = other.green_;
+        this->blue_ = other.blue_;
     }
+    //Another constructor. Receives as arguments rgb_value variables red, green and blue, those which will be passed as atributes of the object of the class.
     Color::Color(rgb_value red, rgb_value green, rgb_value blue) {
-
+        this->red_ = red;
+        this->green_ = green;
+        this->blue_ = blue;
     }
+    //A member function that, once called, returns the red_ atribute.
     rgb_value Color::red() const {
-        return 0;
+        return this->red_;
     }
+    //A member function that, once called, returns the green_ atribute.
     rgb_value Color::green() const {
-        return 0;
+        return this->green_;
     }
+    //A member function that, once called, returns the blue_ atribute.
     rgb_value Color::blue() const {
-        return 0;
+        return this->blue_;
     }
-
-    // TODO: remove this DUMMY variable once you have appropriate fields for representing colors.
-    rgb_value DUMMY_rgb_value = 0; 
-
+    //A member function that, once called, returns a mutable reference of the red_ atribute
     rgb_value& Color::red()  {
-        return DUMMY_rgb_value;
+        return this->red_;
     }
+    //A member function that, once called, returns a mutable reference of the green_ atribute
     rgb_value& Color::green()  {
-      return DUMMY_rgb_value;
+      return this->green_;
     }
+    //A member function that, once called, returns a mutable reference of the blue_ atribute
     rgb_value& Color::blue()  {
-      return DUMMY_rgb_value;
+      return this->blue_;
     }
 }
