@@ -7,7 +7,7 @@ namespace prog
   class Color
   {
     private:
-    //Class atributes, all of type rgb_value
+    //Class attributes, all of type rgb_value
         rgb_value red_;
         rgb_value green_;
         rgb_value blue_;
