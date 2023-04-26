@@ -4,8 +4,8 @@ namespace prog
 {
   Image::Image(int w, int h, const Color &fill)
   {
-    this->width = w;
-    this->height = h;
+    this->width_ = w;
+    this->height_ = h;
 
   }
   Image::~Image()
