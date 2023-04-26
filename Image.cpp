@@ -4,17 +4,22 @@ namespace prog
 {
   Image::Image(int w, int h, const Color &fill)
   {
+    this->width = w;
+    this->height = h;
+
   }
   Image::~Image()
   {
   }
+  //A member function that, once called, returns the width_ attribute.
   int Image::width() const
   {
-    return -1;
+    return this->width_;
   }
+  //A member function that, once called, returns the height_ attribute.
   int Image::height() const
   {
-    return -1;
+    return this->height_;
   }
 
   // TODO: remove this DUMMY_color variable once you have appropriate fields for representing image pixels.
