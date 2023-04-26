@@ -2,11 +2,11 @@
 
 namespace prog
 {
-  Image::Image(int w, int h, const Color &fill)
+  Image::Image(int w, int h, const Color& fill)
   {
     this->width_ = w;
     this->height_ = h;
-
+    this->color_ = fill;
   }
   Image::~Image()
   {
@@ -27,6 +27,7 @@ namespace prog
 
   Color& Image::at(int x, int y)
   {
+    
     return DUMMY_color;
   }
 
