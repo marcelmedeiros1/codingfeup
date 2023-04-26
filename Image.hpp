@@ -1,7 +1,8 @@
 #ifndef __prog_Image_hpp__
 #define __prog_Image_hpp__
+#include <vector>
 #include "Color.hpp"
-
+#include <iostream>
 namespace prog
 {
   class Image
@@ -10,7 +11,7 @@ namespace prog
   //Class Atributes, all of type int
     int width_;
     int height_;
-    Color color_;
+    Color** pixels_;
   public:
   //Constructors of the class
     Image(int w, int h, const Color &fill = {255, 255, 255});
