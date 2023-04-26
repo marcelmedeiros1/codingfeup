@@ -1,4 +1,4 @@
-#include "Image.hpp"
+#include "image.hpp"
 
 namespace prog
 {
