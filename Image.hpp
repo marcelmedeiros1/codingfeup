@@ -10,6 +10,7 @@ namespace prog
   //Class Atributes, all of type int
     int width_;
     int height_;
+    Color color_;
   public:
   //Constructors of the class
     Image(int w, int h, const Color &fill = {255, 255, 255});
