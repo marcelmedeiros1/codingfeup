@@ -47,7 +47,16 @@ namespace prog {
             if (command == "save") {
                 save();
                 continue;
-            } 
+            }
+            //Added the conditional branches to access the private functions.
+            if (command == "invert"){
+                invert();
+                continue;
+            }
+            if (command == "to_gray_scale"){
+                to_gray_scale();
+                continue;
+            }
             // TODO ...
 
         }
@@ -72,5 +81,31 @@ namespace prog {
         string filename;
         input >> filename;
         saveToPNG(filename, image);
+    }
+    //Transforms each individual pixel (r,g,b) to (255-r,255-g,255-b).
+    void Script::invert(){
+        /*The code runs the width and height of the current image
+        getting each individual pixel and inverting its atribute*/
+        for (int i = 0; i < image->width(); i++) {
+            for(int j=0; j<image->height(); j++){
+                image->at(i,j).red() = 255 - image->at(i,j).red();
+                image->at(i,j).green() = 255 - image->at(i,j).green();
+                image->at(i,j).blue() = 255 - image->at(i,j).blue();
+            }
+      }
+    }
+    //Transforms each individual pixel (r, g, b) to (v, v, v) where v = (r + g + b)/3. You should use integer division without rounding to compute v.
+    void Script::to_gray_scale(){
+        /*The code runs the width and height of the current image
+        getting each individual pixel and setting its atribute to
+        a uniform value equal to the medium of the colors of the current pixel*/
+        for (int i = 0; i < image->width(); i++) {
+            for(int j=0; j<image->height(); j++){
+                int v = ( image->at(i,j).red() + image->at(i,j).green() +image->at(i,j).blue() ) / 3;
+                image->at(i,j).red() = v;
+                image->at(i,j).green() = v;
+                image->at(i,j).blue() = v;
+            }
+        }
     }
 }
