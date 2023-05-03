@@ -57,6 +57,16 @@ namespace prog {
                 to_gray_scale();
                 continue;
             }
+            if (command == "replace"){
+                replace();
+                continue;
+            }
+            if(command == "fill"){
+                fill();
+                continue;
+            }
+
+
             // TODO ...
 
         }
@@ -108,4 +118,32 @@ namespace prog {
             }
         }
     }
+    void Script::replace(){
+        
+        
+        Color c1,c2;
+        input >> c1 >> c2;
+        for (int i = 0; i < image->width(); i++) {
+            for(int j=0; j<image->height(); j++){
+                if((image->at(i,j).red() == c1.red())&&(image->at(i,j).green() == c1.green())&&(image->at(i,j).blue() == c1.blue())){
+                    image->at(i,j).red() = c2.red();
+                    image->at(i,j).blue() = c2.blue();
+                    image->at(i,j).green() = c2.green();
+                }
+            }
+        }
+    }
+    void Script::fill(){
+        int x,y,w,h;
+        Color c1;
+        input >> x >> y >> w >> h >> c1;
+        for (int i = x; i < x + w; i++) {
+            for(int j=y; j< y + h; j++){
+                image->at(i,j).red() = c1.red();
+                image->at(i,j).green() = c1.green();
+                image->at(i,j).blue() = c1.blue();
+            }
+        }
+    }
 }
+
