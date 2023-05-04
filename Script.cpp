@@ -65,8 +65,18 @@ namespace prog {
                 fill();
                 continue;
             }
-
-
+            if(command == "h_mirror"){
+                h_mirror();
+                continue;
+            }
+            if(command == "v_mirror"){
+                v_mirror();
+                continue;
+            }
+            if(command == "add"){
+                add();
+                continue;
+            }
             // TODO ...
 
         }
@@ -145,5 +155,43 @@ namespace prog {
             }
         }
     }
+    void Script::h_mirror(){
+        Color aux;
+        for (int i = 0; i < image->width()/2; i++){
+            for(int j=0; j < image->height(); j++){
+                aux = image->at(i, j);
+                image->at(i, j) = image->at(image->width()-1 - i, j);
+                image->at(image->width()-1 - i, j) = aux;
+            }
+        }
+    }
+    void Script::v_mirror(){
+        Color aux;
+        for (int i = 0; i < image->width(); i++){
+            for(int j=0; j < image->height()/2; j++){
+                aux = image->at(i, j);
+                image->at(i, j) = image->at(i, image->height()-1-j);
+                image->at(i,image->height()-1-j) = aux;
+            }
+        }
+    }
+    void Script::add(){
+        Color c1;
+        string filename;
+        int x,y;
+        input >> filename >> c1 >> x >> y;
+        Image* aux = loadFromPNG(filename);
+        for(int i = x;i < image->width() + x;i++){
+            for(int j = y; y < image->height() + y;j++){
+                if((aux->at(i,j).red() == c1.red())&&(aux->at(i,j).green() == c1.green())&&(aux->at(i,j).blue() == c1.blue())){
+                    continue;
+                }else{
+                    image->at(i-x,j-y) = aux->at(i,j);
+                }
+            }
+        }
+
+    }
 }
+   
 
