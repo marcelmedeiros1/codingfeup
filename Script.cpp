@@ -77,6 +77,18 @@ namespace prog {
                 add();
                 continue;
             }
+            if(command == "crop"){
+                crop();
+                continue;
+            }
+            if(command == "rotate_left"){
+                rotate_left();
+                continue;
+            }
+            if(command == "rotate_right"){
+                rotate_right();
+                continue;
+            }
             // TODO ...
 
         }
@@ -181,17 +193,74 @@ namespace prog {
         int x,y;
         input >> filename >> c1 >> x >> y;
         Image* aux = loadFromPNG(filename);
-        for(int i = x;i < image->width() + x;i++){
-            for(int j = y; y < image->height() + y;j++){
-                if((aux->at(i,j).red() == c1.red())&&(aux->at(i,j).green() == c1.green())&&(aux->at(i,j).blue() == c1.blue())){
+        for(int i = x;i < aux->width()+x;i++){
+            for(int j = y; j < aux->height()+y;j++){
+                if((aux->at(i-x,j-y).red() == c1.red())&&(aux->at(i-x,j-y).green() == c1.green())&&(aux->at(i-x,j-y).blue() == c1.blue())){
                     continue;
                 }else{
-                    image->at(i-x,j-y) = aux->at(i,j);
+                   image->at(i,j) = {aux->at(i-x,j-y).red(), aux->at(i-x,j-y).green(), aux->at(i-x,j-y).blue()};
                 }
             }
         }
-
+        delete aux;
     }
+    void Script::crop(){
+        
+        int x,y,w,h;
+        input >> x >> y >> w >> h;
+        Image* aux = new Image(w,h);
+        for(int i = x; i < w+x; i++){
+            for(int j = y; j < h+y; j++){
+                aux->at(i-x, j-y) = {image->at(i,j).red(), image->at(i,j).green(), image->at(i,j).blue()};
+            }
+        }
+        clear_image_if_any();
+        image = new Image(aux->width(), aux->height());
+        for(int i = 0; i < aux->width(); i++){
+            for(int j = 0; j < aux->height(); j++){
+                image->at(i, j) = {aux->at(i,j).red(), aux->at(i,j).green(), aux->at(i,j).blue()};
+            }
+        }
+        delete aux;
+    } 
+    void Script::rotate_left(){
+        Image* aux = new Image(image->height(), image->width());
+
+        for (int i = 0; i < image->width(); i++) {
+             for (int j = 0; j < image->height(); j++) {
+                aux->at(j, image->width() - i - 1) = image->at(i, j);
+         }
+    }
+    clear_image_if_any();
+        image = new Image(aux->width(), aux->height());
+        for(int i = 0; i < image->width(); i++){
+            for(int j = 0; j < image->height(); j++){
+                image->at(i, j) = {aux->at(i,j).red(), aux->at(i,j).green(), aux->at(i,j).blue()};
+            }
+        }
+        delete aux;
+    }
+
+    void Script::rotate_right(){
+        Image* aux = new Image(image->height(), image->width());
+        int h = image->height();
+        int w = image->width();
+        for (int i = 0; i < h; i++) {
+             for (int j = 0; j < w; j++) {
+                aux->at(i,j) = image->at(j, h - i -1);
+         }
+    }
+    clear_image_if_any();
+        image = new Image(aux->width(), aux->height());
+        for(int i = 0; i < h; i++){
+            for(int j = 0; j < w; j++){
+                image->at(i, j) = {aux->at(i,j).red(), aux->at(i,j).green(), aux->at(i,j).blue()};
+            }
+        }
+        delete aux;
+    }
+    
 }
+
    
 
