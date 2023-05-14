@@ -11,11 +11,11 @@ namespace prog
   //Class Atributes, all of type int
     int width_;
     int height_;
-    Color** pixels_;
+    Color** pixels_; //A bidimensional array with all pixels
   public:
   //Constructors of the class
     Image(int w, int h, const Color &fill = {255, 255, 255});
-    ~Image();
+    ~Image(); //Destructor
   //Member functions of the class
     int width() const;
     int height() const;
