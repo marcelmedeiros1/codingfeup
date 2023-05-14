@@ -10,9 +10,9 @@ namespace prog
   class Script
   {
   public: 
-    Script(const std::string &filename);
-    ~Script();
-    void run();
+    Script(const std::string &filename); //Constructor
+    ~Script(); //Destructor
+    void run(); //A function to call the member functions defined below
   private:
     // Current image.
     Image *image;
@@ -24,7 +24,7 @@ namespace prog
     void open();
     void blank();
     void save();
-    //Added the private functions
+    //Private functions added
     void invert();
     void to_gray_scale();
     void replace();
