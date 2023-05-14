@@ -2,6 +2,7 @@
 
 namespace prog
 {
+  //A constructor to fill all pixels of the image with the color "fill"
   Image::Image(int w, int h, const Color& fill)
   {
     this->width_ = w;
@@ -14,12 +15,6 @@ namespace prog
         }
       }
         
-   /* for(int i=0; i<w; i++){
-      for(int j=0; j<h; j++){
-        pixels_[i][j] = fill;
-      }
-    }
-    */
   }
   Image::~Image()
   {
