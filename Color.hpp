@@ -13,12 +13,12 @@ namespace prog
         rgb_value blue_;
     public:
     //Constructors of the class
-      Color();
-      Color(const Color& c);
-      Color(rgb_value r, rgb_value g, rgb_value b);
+      Color(); //Default Constructor
+      Color(const Color& c); //Copy Constructor
+      Color(rgb_value r, rgb_value g, rgb_value b); //Another Constructor
     //Member functions of the class
-      rgb_value red() const;
-      rgb_value& red();
+      rgb_value red() const; //Get
+      rgb_value& red(); //Set
       rgb_value green() const;
       rgb_value& green();
       rgb_value blue() const;
