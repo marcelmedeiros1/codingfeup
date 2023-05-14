@@ -142,7 +142,7 @@ namespace prog {
     }
     void Script::replace(){
         
-        
+         /*The code replaces all pixels with c1 color to c2 color*/
         Color c1,c2;
         input >> c1 >> c2;
         for (int i = 0; i < image->width(); i++) {
@@ -156,6 +156,7 @@ namespace prog {
         }
     }
     void Script::fill(){
+        /*The code replaces to color c1 a sector in the image limited by x,y (top-left corner) and w,h*/
         int x,y,w,h;
         Color c1;
         input >> x >> y >> w >> h >> c1;
@@ -168,6 +169,7 @@ namespace prog {
         }
     }
     void Script::h_mirror(){
+        /*The code mirrors the image horizontally*/
         Color aux;
         for (int i = 0; i < image->width()/2; i++){
             for(int j=0; j < image->height(); j++){
@@ -178,6 +180,7 @@ namespace prog {
         }
     }
     void Script::v_mirror(){
+        /*The code mirrors the image vertically*/
         Color aux;
         for (int i = 0; i < image->width(); i++){
             for(int j=0; j < image->height()/2; j++){
@@ -188,11 +191,12 @@ namespace prog {
         }
     }
     void Script::add(){
+        /*The code copies to the current image, in a sector which the top left corner is x,y, all pixels from image stored in PNG filename, except pixels with the Color c1*/
         Color c1;
         string filename;
         int x,y;
         input >> filename >> c1 >> x >> y;
-        Image* aux = loadFromPNG(filename);
+        Image* aux = loadFromPNG(filename); //New Image
         for(int i = x;i < aux->width()+x;i++){
             for(int j = y; j < aux->height()+y;j++){
                 if((aux->at(i-x,j-y).red() == c1.red())&&(aux->at(i-x,j-y).green() == c1.green())&&(aux->at(i-x,j-y).blue() == c1.blue())){
@@ -205,16 +209,16 @@ namespace prog {
         delete aux;
     }
     void Script::crop(){
-        
+        /*Crop the image*/
         int x,y,w,h;
         input >> x >> y >> w >> h;
-        Image* aux = new Image(w,h);
+        Image* aux = new Image(w,h); //Cropped image
         for(int i = x; i < w+x; i++){
             for(int j = y; j < h+y; j++){
                 aux->at(i-x, j-y) = {image->at(i,j).red(), image->at(i,j).green(), image->at(i,j).blue()};
             }
         }
-        clear_image_if_any();
+        clear_image_if_any(); //Clear the old image
         image = new Image(aux->width(), aux->height());
         for(int i = 0; i < aux->width(); i++){
             for(int j = 0; j < aux->height(); j++){
@@ -224,6 +228,7 @@ namespace prog {
         delete aux;
     } 
     void Script::rotate_left(){
+        /*Rotate 90 degrees to the left*/
         Image* aux = new Image(image->height(), image->width());
 
         for (int i = 0; i < image->width(); i++) {
@@ -242,6 +247,7 @@ namespace prog {
     }
 
     void Script::rotate_right(){
+        /*Rotate 90 degrees to the left*/
         Image* aux = new Image(image->height(), image->width());
         int h = image->height();
         int w = image->width();
@@ -261,6 +267,9 @@ namespace prog {
     }
     
 }
+
+   
+
 
    
 
